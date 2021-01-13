@@ -52,10 +52,16 @@ Please feel free to spread the word and share the results during or after the ha
 * approx. 15:00 Virtual coffee (Zoom)
 
 ## Collaboration Tools
+We’ve decided to keep the collaboration tools as simple as possible and propose Slack, Zoom and GitHub.
+
+Tool | Usage
+------------ | -------------
+Slack | Please sign up to the slack workspace “ORD hackathon” by following this link: https://join.slack.com/t/ordhackathon/shared_invite/zt-kiq76j4x-taXwUfbwGnWCnHeD92B8GQ You can already get to know people, start to chat on the #general channel or talk more about your idea on the dedicated channels
+Zoom | We’ll have all our general meetings and evening chats (or rather late afternoon socials) on this Zoom call. Please use the #general channel on Slack to comment and also to let us know, if you’re having problems signing in etc. https://switch-ch.zoom.us/j/61779493193?pwd=SHZ2NlRpbGF3Lzh0Z3E4T0tSamtDdz09
+GitHub | This is the repository we’ll use. Please sign up to GitHub and the space https://github.com/ORD-Hackathon/hackathon-2021 and check out the Read.me file.
 
 ## Results
-
-## Proceeding
+We will publish a report to describe the respective results of each participating team. The structure of the document and level of details are tbd.
 
 ## Support
 Please feel free to contact info@ord-hackathon.ch for any question regarding the Hackathon. 
