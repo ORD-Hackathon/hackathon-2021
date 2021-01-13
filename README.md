@@ -2,21 +2,38 @@
 SWITCH and FORS organise an Open Research Data (ORD) Hackathon to strengthen collaboration and build a community around ORD.
 Students, academics, developers and service providers from Switzerland and beyond are invited to share their ideas and pave the way for innovative projects and applications.
 
-## Process
-### Submission of Ideas
-### Register Groups
-### Hacking
-### Update
-### Presentations
-### Voting
-### Prizes
-### Communicate
-Speak about 
+## Hackathon Process
+### Submission of Ideas (now closed)
+The Community submitted a total of 13 ideas to hack on. 
+Please feel free to have a look at them here prior to the Hackathon.
 
+### Idea Presentation
+Each idea will be presented during the Kick-Off Event on 18th January 2021.
+
+### Choose idea to hack on 
+Once the ideas are presented, each participant should decide on the idea to hack on. This is organised through a poll on Slack during the Kick-Off Event.
+
+### Team Building
+The polling will result in self-organised teams for each idea. Here, each team should decide upon a team leader who should make sure that all necessary skills are present in a given team. 
+
+### Hacking
+The actual Hacking starts once the teams are formed and continues throughout each Day of the Hackathon.
+
+### Presentations
+Each team will then be asked to present their Hacking results to the Community on Day 3. 
+
+### Voting
+After each team presented, we will organise a little voting via the a polling feature on Slack.
+
+### Prizes
+Based on the voting, SWITCH and FORS will offer some prizes for the winning teams.
+
+### Communicate
+Please feel free to spread the word and share the results during or after the Hackathon. 
 
 ## Agenda
 ### Day 1 - 18th January 2021
-* 09:00 Kick-Off Meeting (Zoom)
+* 09:00 Kick-Off Event (Zoom)
   * Welcome
   * Agenda
   * Idea presentation and voting
@@ -40,5 +57,6 @@ Speak about
 
 ## Proceeding
 
-
+## Support
+Please feel free to contact info@ord-hackathon.ch for any question regarding the Hackathon. 
 
