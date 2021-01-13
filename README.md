@@ -3,6 +3,16 @@ SWITCH and FORS organise an Open Research Data (ORD) Hackathon to strengthen col
 Students, academics, developers and service providers from Switzerland and beyond are invited to share their ideas and pave the way for innovative projects and applications.
 
 ## Process
+### Submission of Ideas
+### Register Groups
+### Hacking
+### Update
+### Presentations
+### Voting
+### Prizes
+### Communicate
+Speak about 
+
 
 ## Agenda
 ### Day 1 - 18th January 2021
