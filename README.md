@@ -4,23 +4,23 @@ Students, academics, developers and service providers from Switzerland and beyon
 
 ## Hackathon Process
 1. Submission of Ideas (now closed):
-The Community submitted a total of 13 ideas to hack on. 
-Please feel free to have a look at them here prior to the Hackathon.
+The community submitted a total of 13 ideas to hack on. 
+Please feel free to have a look at them here prior to the hackathon.
 
 1. Idea Presentation:
-Each idea will be presented during the Kick-Off Event on 18th January 2021.
+Each idea will be presented during the kick-off event on 18th January 2021.
 
 1. Choose idea to hack on:
-Once the ideas are presented, each participant should decide on the idea to hack on. This is organised through a poll on Slack during the Kick-Off Event.
+Once the ideas are presented, each participant should decide on the idea to hack on. This is organised through a poll on Slack during the kick-off event.
 
 1. Team Building:
 The polling will result in self-organised teams for each idea. Here, each team should decide upon a team leader who should make sure that all necessary skills are present in a given team. 
 
 1. Hacking:
-The actual Hacking starts once the teams are formed and continues throughout each Day of the Hackathon.
+The actual hacking starts once the teams are formed and continues throughout each day of the hackathon.
 
 1. Presentations:
-Each team will then be asked to present their Hacking results to the Community on Day 3. 
+Each team will then be asked to present their hacking results to the community on day 3. 
 
 1. Voting:
 After each team presented, we will organise a little voting via the a polling feature on Slack.
@@ -29,7 +29,7 @@ After each team presented, we will organise a little voting via the a polling fe
 Based on the voting, SWITCH and FORS will offer some prizes for the winning teams.
 
 1. Communicate:
-Please feel free to spread the word and share the results during or after the Hackathon. 
+Please feel free to spread the word and share the results during or after the hackathon. 
 
 ## Agenda
 ### Day 1 - 18th January 2021
