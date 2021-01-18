@@ -1,0 +1,2 @@
+pip install -U pip setuptools wheel
+pip install -U spacy
