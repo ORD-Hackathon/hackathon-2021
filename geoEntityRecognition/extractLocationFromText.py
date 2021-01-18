@@ -42,10 +42,10 @@ def getLocationsGerman(text):
 
 if __name__ == '__main__':
     testDataPath = "test_data/"
-    englishTestData = os.path.join(testDataPath, "magellan_voyage.txt")
+    englishTestData = os.path.join(testDataPath, "en_magellan_voyage.txt")
     englishText = open(englishTestData, "r").read()
     print(getLocationsEnglish(englishText))
 
-    germanTestData = os.path.join(testDataPath, "mozartItalienReise.txt")
+    germanTestData = os.path.join(testDataPath, "de_mozartItalienReise.txt")
     germanText = open(germanTestData, "r").read()
     print(getLocationsGerman(germanText))
