@@ -60,6 +60,7 @@ if __name__ == '__main__':
     englishText = open(englishTestData, "r").read()
     foundLocations = parser.getLocationsEnglish(englishText)
 
+
     germanTestData = os.path.join(testDataPath, "de_mozartItalienReise.txt")
     germanText = open(germanTestData, "r").read()
     foundLocations = parser.getLocationsGerman(germanText)
