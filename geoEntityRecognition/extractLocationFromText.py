@@ -3,7 +3,7 @@ import os
 from geoEntity import GeoEntity
 
 
-class ExtractLocationFormText:
+class ExtractLocationFromText:
     def __init__(self):
         self.locationLabels = ['GPE', 'LOC', 'FAC']
 
@@ -51,23 +51,23 @@ class ExtractLocationFormText:
 
 if __name__ == '__main__':
     testDataPath = "test_data/"
-    parser = ExtractLocationFormText()
+    parser = ExtractLocationFromText()
     englishTestData = os.path.join(testDataPath, "en_magellan_voyage.txt")
     englishText = open(englishTestData, "r").read()
     foundLocations = parser.getLocationsEnglish(englishText)
-    print(len(foundLocations), foundLocations)
+    print(f"---English---\nLocations found: {len(foundLocations)}\nResults: {foundLocations}\n\n")
 
     germanTestData = os.path.join(testDataPath, "de_mozartItalienReise.txt")
     germanText = open(germanTestData, "r").read()
     foundLocations = parser.getLocationsGerman(germanText)
-    print(len(foundLocations), foundLocations)
+    print(f"---German---\nLocations found: {len(foundLocations)}\nResults: {foundLocations}\n\n")
 
     frenchTestData = os.path.join(testDataPath, "fr_paris_a_Jerusalem.txt")
     frenchText = open(frenchTestData, "r").read()
     foundLocations = parser.getLocationsFrench(frenchText)
-    print(len(foundLocations), foundLocations)
+    print(f"---French---\nLocations found: {len(foundLocations)}\nResults: {foundLocations}\n\n")
 
     italianTestData = os.path.join(testDataPath, "it_marcOPollo.txt")
     italianText = open(italianTestData, "r").read()
     foundLocations = parser.getLocationsItalian(italianText)
-    print(len(foundLocations), foundLocations)
+    print(f"---Italian---\nLocations found: {len(foundLocations)}\nResults: {foundLocations}\n\n")
