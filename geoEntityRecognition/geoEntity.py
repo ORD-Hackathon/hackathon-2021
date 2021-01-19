@@ -1,5 +1,5 @@
 class GeoEntity:
-    def __init__(self, text, label, startChar, endChar, lang):
+    def __init__(self, text, label, startChar, endChar, lang, lon="", lat=""):
         self.label = label
         self.text = text
         self.startChar = startChar
@@ -7,5 +7,5 @@ class GeoEntity:
         self.language = lang
         self.geoNameID = ""
         self.wikiID = ""
-        self.longitude = ""
-        self.latitude = ""
+        self.longitude = lon
+        self.latitude = lat
