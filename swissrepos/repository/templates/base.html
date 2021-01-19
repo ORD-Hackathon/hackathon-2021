@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>{% block title %}Swiss repositories{% endblock %}</title>
+    </head>
+
+    <body>
+        <div class="container-fluid mt-1">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-8">
+                    <nav id="topbar" class="navbar navbar-expand-lg navbar-light bg-light">
+                        {% block topbar %}
+                            <a class="navbar-brand" href="#">
+                                <img src="{% static 'bootstrap-icons-1.3.0/bootstrap-reboot.svg' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+                                Swiss repositories
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <div class="navbar-nav mr-auto"></div>
+                                <ul class="navbar-nav my-2 my-lg-0">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="/">Catalogue</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/metrics">Metrics</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/assessment">Self assessment</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/evaluation">Maturity evaluation</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        {% endblock %}
+                    </nav>
+                    <div id="content" class="container-fluid pt-3">
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col-10">
+                                {% block content %}{% endblock %}
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </body>
+</html>
