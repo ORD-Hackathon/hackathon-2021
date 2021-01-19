@@ -1,5 +1,6 @@
 from qwikidata.sparql  import return_sparql_query_results
 import warnings
+import time
 
 def getPostition(coordinate):
     longitude, latitude = coordinate.split(" ")
@@ -37,6 +38,19 @@ def getWikiRecord(name, lang):
 
     return wikiId, geonameID, longitude, lattitude
 
+
+def addWikiInfo(foundLocations):
+    counter = 0
+    for loc in foundLocations:
+        print(counter)
+        loc.wikiID, loc.geoNameID, loc.longitude, loc.latitude = getWikiRecord(loc.text, loc.language)
+        if (counter == 10):
+            time.sleep(60)
+            counter = 0
+        else:
+            counter += 1
+        print(loc.__dict__)
+    return foundLocations
 
 if __name__ == '__main__':
     print(getWikiRecord("Berlin", "de"))
