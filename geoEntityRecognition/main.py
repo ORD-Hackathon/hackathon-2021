@@ -11,6 +11,6 @@ if __name__ == '__main__':
     englishText = open(englishTestData, "r").read()
     foundLocations = parser.getLocationsEnglish(englishText)
     for loc in foundLocations:
-        loc.wikiID, loc.geonameID, loc.longitude, loc.lattitude = getWikiRecord(loc.text, loc.language)
+        loc.wikiID, loc.geonameID, loc.longitude, loc.latitude = getWikiRecord(loc.text, loc.language)
         print(loc.__dict__)
 

@@ -25,7 +25,7 @@ def getWikiRecord(name, lang):
     longitude = ""
     lattitude = ""
     if (len(results)==0) :
-        warnings.warn("No records found for location " + name + "in language " + lang + ".")
+        warnings.warn("No records found for location " + name + " in language " + lang + ".")
     else :
         record = results[0]
         # if(len(results)>1):
