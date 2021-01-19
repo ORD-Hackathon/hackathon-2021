@@ -4,8 +4,8 @@ from getIdentifer import getWikiRecord
 import time
 from writeHTML import writeToHTML
 
-def createEnglishTestResult():
 
+def createEnglishTestResult():
     testFile = "en_magellan_voyage.txt"
 
     testData = os.path.join(testDataPath, "en_magellan_voyage.txt")

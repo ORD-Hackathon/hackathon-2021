@@ -1,8 +1,17 @@
 import os
+from lxml import etree as et
+
+
 def writeToHTML(text, foundLocations, outputFile):
     htmlFile = os.path.join('results', outputFile+'.html')
+    root = et.Element("html")
+    head = et.SubElement(root, "head")
+    body = et.SubElement(root, "body")
+    title = et.SubElement(body, "h1")
+    title.text = outputFile
+
     first_index = 0
-    html_body = ""
+    html_body = "<p>"
     for loc in foundLocations:
         html_body += text[first_index:loc.startChar]
         if loc.wikiID:
@@ -13,12 +22,8 @@ def writeToHTML(text, foundLocations, outputFile):
         first_index = loc.endChar
 
     lastLocation = foundLocations[-1].endChar
-    html_body += text[lastLocation:]
-    html_content = """<html>
-        <head></head>\n
-        <body>\n<p>""" + html_body + """\n</p>\n</body>
-        </html>"""
-
-    f = open(htmlFile, "w")
-    f.write(html_content)
-    f.close()
+    html_body += text[lastLocation:] + "</p>"
+    body.append(et.fromstring(html_body))
+    # Writing the HTML to disk
+    with open(htmlFile, "wb") as f:
+        f.write(et.tostring(root, pretty_print=True))
