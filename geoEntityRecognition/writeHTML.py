@@ -1,4 +1,6 @@
-def writeToHTML(text, foundLocations):
+import os
+def writeToHTML(text, foundLocations, outputFile):
+    htmlFile = os.path.join('results', outputFile+'.html')
     first_index = 0
     html_body = ""
     for loc in foundLocations:
@@ -12,4 +14,11 @@ def writeToHTML(text, foundLocations):
 
     lastLocation = foundLocations[-1].endChar
     html_body += text[lastLocation:]
-    return html_body
+    html_content = """<html>
+        <head></head>\n
+        <body>\n<p>""" + html_body + """\n</p>\n</body>
+        </html>"""
+
+    f = open(htmlFile, "w")
+    f.write(html_content)
+    f.close()

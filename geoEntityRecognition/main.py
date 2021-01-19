@@ -4,14 +4,13 @@ from getIdentifer import getWikiRecord
 import time
 from writeHTML import writeToHTML
 
+def createEnglishTestResult():
 
-if __name__ == '__main__':
+    testFile = "en_magellan_voyage.txt"
 
-    testDataPath = "test_data/"
-    parser = ExtractLocationFromText()
-    testData = os.path.join(testDataPath, "fr_paris_a_Jerusalem.txt")
+    testData = os.path.join(testDataPath, "en_magellan_voyage.txt")
     text = open(testData, "r").read()
-    foundLocations = parser.getLocationsFrench(text)
+    foundLocations = parser.getLocationsEnglish(text)
     counter = 0
     for loc in foundLocations:
         print(counter)
@@ -22,13 +21,13 @@ if __name__ == '__main__':
         else :
             counter += 1
         print(loc.__dict__)
+    fileBaseName, ending = os.path.splitext(os.path.basename(testFile))
+    writeToHTML(text, foundLocations, fileBaseName)
 
-    html_body = writeToHTML(text, foundLocations)
-    html_content= """<html>
-    <head></head>\n
-    <body>\n<p>""" + html_body + """\n</p>\n</body>
-    </html>"""
 
-    f = open("fr_paris_a_Jerusalem.html", "w")
-    f.write(html_content)
-    f.close()
+if __name__ == '__main__':
+
+    testDataPath = "test_data/"
+    parser = ExtractLocationFromText()
+    createEnglishTestResult()
+
