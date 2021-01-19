@@ -9,7 +9,7 @@ ACCESS_TOKEN = "RRlabvBJSg4yFCVwILXvtTdEYoMBpQ3fw6CuGmjWNUIwXX6tmDREvQcktRLe"
 
 
 def get_data_for_name(name):
-    records = api_zenodo.get_record_doi_for_name(name)
+    records = api_zenodo.get_record_dois_for_name(name)
     # print(records.json())
 
 
