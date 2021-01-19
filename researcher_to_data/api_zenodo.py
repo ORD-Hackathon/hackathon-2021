@@ -27,7 +27,7 @@ def get_record_dois_for_name(name):
     print(li)
 
 def get_record_dois_for_next_page(page):
-
+    pass
 
 
 def get_data_for_orcid(orcid):
