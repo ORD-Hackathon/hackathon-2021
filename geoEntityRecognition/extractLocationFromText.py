@@ -13,7 +13,7 @@ class ExtractLocationFormText:
 
         for ent in geoEntities:
             entity = GeoEntity(ent.text, ent.label_, ent.start_char, ent.end_char, lang)
-            foundLocations.append(entity.__dict__)
+            foundLocations.append(entity)
 
         return foundLocations
 
