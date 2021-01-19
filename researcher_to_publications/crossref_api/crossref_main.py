@@ -1,6 +1,7 @@
 import requests
 
-orcid = 'orcid:0000-0003-2588-4212'
+orcid = '0000-0003-2588-4212'
+
 query = 'http://api.crossref.org/works?filter=orcid:' + orcid
 
 r = requests.get(query)
