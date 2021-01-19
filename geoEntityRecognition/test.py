@@ -15,19 +15,17 @@ if __name__ == '__main__':
     englishTestData = os.path.join(testDataPath, "en_magellan_voyage.txt")
     englishText = open(englishTestData, "r").read()
     foundLocations = parser.getLocationsEnglish(englishText)
-    print("****")
-    print("Num Locations: ", len(foundLocations))
-
+    
     counter = 0
     for loc in foundLocations:
-        loc.wikiID, loc.geonameID, loc.longitude, loc.lattitude = getWikiRecord(loc.text, loc.language)
+        loc.wikiID, loc.geonameID, loc.longitude, loc.latitude = getWikiRecord(loc.text, loc.language)
         englishText = englishText.replace(f" {loc.text}", " " + loc_with_link(loc))
-        counter += 1
-
-        if counter == 10:
-            time.sleep(65)
+        if (counter>10):
+            time.sleep(60)
             counter = 0
-    
+        else :
+            counter += 1
+        
     # Adding paragraph tags for each line.
     englishText = ["<p>" + x + "</p>" for x in englishText.split("\n")]
 
@@ -46,4 +44,3 @@ if __name__ == '__main__':
     # Writing the HTML to disk
     with open("demo.html", "wb") as f:
         f.write(et.tostring(root, pretty_print=True))
-    print("Finished writing HTML file.")
