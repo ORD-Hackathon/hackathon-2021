@@ -75,11 +75,24 @@ def extract_data_from_hit(hit):
     if "CC-BY" in license_id:
         license_cc_by = True
 
+    try:
+        description_value = hit.get("metadata").get("description")
+        if len(description_value) > 0:
+            description = True
+        else:
+            description = False
+    except AttributeError:
+        description = False
+
     data = {
         "identifier": hit.get("metadata").get("doi"),
         "access_open": access_open,
-        "license_cc_by": license_cc_by
+        "license_cc_by": license_cc_by,
+        "description": description,
     }
+
+    stats = hit.get("stats")
+    data.update(stats)
 
     return data
 
