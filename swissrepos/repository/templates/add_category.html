@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Add category{% endblock %}
+{% block pageTitle %}Add category{% endblock %}
+
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Metrics</a></li>
+            <li class="breadcrumb-item"><a href="/metrics/1/categories">Metric 1</a></li>
+            <li class="breadcrumb-item"><a href="/metrics/1/categories">Categories</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add category</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'addCategory' metric_id %}" method="post">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">New category</h3>
+                <div class="form-group">
+                    <label for="categoryName">Name</label>
+                    <input type="text" name="categoryName" class="form-control" id="categoryName" placeholder="Category name">
+                </div>
+                <div class="form-group">
+                    <label for="categoryDescription">Description</label>
+                    <textarea name="categoryDescription" class="form-control" id="categoryDescription" rows="3"></textarea>
+                </div>
+                <a class="btn btn-secondary" href="/metrics/1/categories" role="button">Cancel</a>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Assessment for {{ repository.name }}{% endblock %}
+
+{% block content %}
+    <form action="{% url 'assessment' repository.id %}" method="post">
+        {% csrf_token %}
+        <div class="card mt-2">
+            <div class="card-body">
+                <h3 class="card-title">Assessment for {{ repository.name }}</h3>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <div class="card-columns">
+                    {% for category in categories %}
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ category.name }}</h5>
+                                {% for indicator in category.indicatorcategory_set.all %}
+                                    <div class="form-group">
+                                        <label for="indicator{{ indicator.id }}">{{ indicator.name }}</label>
+                                        <select class="form-control" id="indicator{{ indicator.id }}">
+                                            {% for level in levels %}
+                                                <option value="{{ level.id }}">{{ level.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                {% endfor %}
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

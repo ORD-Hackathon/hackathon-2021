@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Repository assessment{% endblock %}
+{% block pageTitle %}Repository assessment{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <div class="bs-stepper">
+                <div class="bs-stepper-header" role="tablist">
+                    <!-- your steps here -->
+                    <div class="step" data-target="#repo-part">
+                        <button type="button" class="step-trigger" role="tab" aria-controls="repo-part" id="repo-part-trigger">
+                            <span class="bs-stepper-circle">1</span>
+                            <span class="bs-stepper-label">Repository info</span>
+                        </button>
+                    </div>
+                    <div class="line"></div>
+                    <div class="step" data-target="#category1-part">
+                        <button type="button" class="step-trigger" role="tab" aria-controls="category1-part" id="category1-part-trigger">
+                            <span class="bs-stepper-circle">2</span>
+                            <span class="bs-stepper-label">Category 1</span>
+                        </button>
+                    </div>
+                    <div class="line"></div>
+                    <div class="step" data-target="#category2-part">
+                        <button type="button" class="step-trigger" role="tab" aria-controls="category2-part" id="category2-part-trigger">
+                            <span class="bs-stepper-circle">3</span>
+                            <span class="bs-stepper-label">Category 2</span>
+                        </button>
+                    </div>
+                    <div class="line"></div>
+                    <div class="step" data-target="#category3-part">
+                        <button type="button" class="step-trigger" role="tab" aria-controls="category3-part" id="category3-part-trigger">
+                            <span class="bs-stepper-circle">4</span>
+                            <span class="bs-stepper-label">Category 5</span>
+                        </button>
+                    </div>
+                    <div class="line"></div>
+                    <div class="step" data-target="#category10-part">
+                        <button type="button" class="step-trigger" role="tab" aria-controls="category10-part" id="category10-part-trigger">
+                            <span class="bs-stepper-circle">5</span>
+                            <span class="bs-stepper-label">Category 10</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="bs-stepper-content">
+                    <!-- your steps content here -->
+                    <div id="repo-part" class="content" role="tabpanel" aria-labelledby="repo-part-trigger"></div>
+                    <div id="category1-part" class="content" role="tabpanel" aria-labelledby="category1-part-trigger"></div>
+                    <div id="category2-part" class="content" role="tabpanel" aria-labelledby="category2-part-trigger"></div>
+                    <div id="category5-part" class="content" role="tabpanel" aria-labelledby="category5-part-trigger"></div>
+                    <div id="category10-part" class="content" role="tabpanel" aria-labelledby="category10-part-trigger"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
