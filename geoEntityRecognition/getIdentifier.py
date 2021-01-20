@@ -42,14 +42,14 @@ def getWikiRecord(name, lang):
 def addWikiInfo(foundLocations):
     counter = 0
     for loc in foundLocations:
-        print(counter)
+        # print(counter)
         loc.wikiID, loc.geoNameID, loc.longitude, loc.latitude = getWikiRecord(loc.text, loc.language)
         if (counter == 10):
             time.sleep(120)
             counter = 0
         else:
             counter += 1
-        print(loc.__dict__)
+        # print(loc.__dict__)
     return foundLocations
 
 if __name__ == '__main__':

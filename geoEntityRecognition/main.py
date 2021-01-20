@@ -1,6 +1,6 @@
 import os
 from extractLocationFromText import ExtractLocationFromText
-from getIdentifer import addWikiInfo
+from getIdentifier import addWikiInfo
 from writeHTML import writeToHTML
 from importLocations import importLocation
 
