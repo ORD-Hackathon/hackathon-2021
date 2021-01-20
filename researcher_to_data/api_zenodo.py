@@ -14,7 +14,7 @@ def get_data_for_name(name):
     """Returns score and metrics data points for all found records, where the name is the creator."""
 
     # get first 10 records
-    records = get_records_page(name, 0)
+    records = get_records_page_by_name(name, 0)
 
     # get total nr of hits
     total_nr_of_hits = int(records.get("hits").get("total"))
@@ -27,14 +27,14 @@ def get_data_for_name(name):
         list_of_datasets.append(extract_data_from_hit(hit))
 
     for page in range(1, total_nr_of_pages):
-        records = get_records_page(name, page)
+        records = get_records_page_by_name(name, page)
         for hit in records.get("hits").get("hits"):
             list_of_datasets.append(extract_data_from_hit(hit))
 
     return list_of_datasets
 
 
-def get_records_page(name, page_nr):
+def get_records_page_by_name(name, page_nr):
     # hitting rate limits. need to back off a little.
     time.sleep(0.5)
     response = ""
@@ -98,10 +98,45 @@ def extract_data_from_hit(hit):
 
 
 def get_data_for_orcid(orcid):
-    return r.get(
-        'https://zenodo.org/api/records',
-        params={'q': 'creators.orcid:' + orcid, 'access_token': ACCESS_TOKEN}
-    )
+    # get first 10 records
+    records = get_records_page_by_orcid(orcid, 0)
+
+    # get total nr of hits
+    total_nr_of_hits = int(records.get("hits").get("total"))
+    total_nr_of_pages = int(total_nr_of_hits / 10)
+    print("total_nr_of_hits: " + str(total_nr_of_hits) + ' (' + str(total_nr_of_pages) + ' pages)')
+
+    list_of_datasets = []
+
+    for hit in records.get("hits").get("hits"):
+        list_of_datasets.append(extract_data_from_hit(hit))
+
+    for page in range(1, total_nr_of_pages):
+        records = get_records_page_by_orcid(orcid, page)
+        for hit in records.get("hits").get("hits"):
+            list_of_datasets.append(extract_data_from_hit(hit))
+
+    return list_of_datasets
+
+
+def get_records_page_by_orcid(orcid, page_nr):
+    # hitting rate limits. need to back off a little.
+    time.sleep(0.5)
+    response = ""
+    if page_nr == 0:
+        response = r.get(
+            'https://zenodo.org/api/records',
+            params={'q': 'creators.orcid:' + orcid, 'access_token': ACCESS_TOKEN}
+        )
+    else:
+        pass
+        response = r.get(
+            'https://zenodo.org/api/records',
+            params={'q': 'creators.orcid:' + orcid, 'page': page_nr, 'size': 10, 'access_token': ACCESS_TOKEN}
+        )
+    # print("get_records_page - url: " + response.url)
+    # print("get_records_page - page_nr: " + str(page_nr))
+    return response.json()
 
 
 def get_data_for_doi(doi):
