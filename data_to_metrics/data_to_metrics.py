@@ -37,25 +37,62 @@
 
 def dataset_to_score(data):
     """Returns Openness Score for a single dataset record"""
-    score = 0
-    if data.get("access_open"):
-        if data.get("license_cc_by"):
-            score = 100
-        else:
-            score = 0
+    if data.get("access_open") and data.get("license_cc_by"):
+        score = 100
+        if not data.get("accrual_method"):
+            score -= 3
+
+        if not data.get("accrual_policy"):
+            score -= 1
+
+        if not data.get("available"):
+            score -= 1
+
+        if not data.get("date"):
+            score -= 2
+
+        if not data.get("date_accepted"):
+            score -= 1
+
+        if not data.get("date_copyrighted"):
+            score -= 1
+
+        if not data.get("date_submitted"):
+            score -= 1
+
+        if not data.get("description"):
+            score -= 3
+
+        if not data.get("format_proprietary_or_not_available"):
+            score -= 3
+
+        if not data.get("has_versions"):
+            score -= 2
+
+        if not data.get("identifier_available"):
+            score -= 5
+
+        if not data.get("language_available"):
+            score -= 2
+
+        if not data.get("provenance_rights"):
+            score -= 5
+
+        if not data.get("rights_holder_available"):
+            score -= 2
+
+        if not data.get("subject"):
+            score -= 2
+
+        if not data.get("title_available"):
+            score -= 5
+
+        if not data.get("type_available"):
+            score -= 2
+
+        return score
     else:
-        score = 0
-
-    # if score == 100:
-    #     if not data.get("accrual_method"):
-    #         score -= 3
-    #
-    #     if not data.get("accrual_policy"):
-    #         score -= 1
-    #
-    #     # TODO: add the rest
-
-    return score
+        return 0
 
 
 def dataset_to_usage_stats(data):
@@ -90,8 +127,9 @@ def datasets_to_scores(list_of_datasets):
 
     result = {
         "ids": identifiers,
-        "openness_scores": openness_scores,
+        "openness_score": sum(openness_scores)/len(openness_scores),
         "usage_stats": usage_stats
     }
+
 
     return result

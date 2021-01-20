@@ -50,7 +50,7 @@ def get_records_page(name, page_nr):
             params={'q': 'creators.name:' + name, 'page': page_nr, 'size': 10, 'access_token': ACCESS_TOKEN}
         )
     # print("get_records_page - url: " + response.url)
-    print("get_records_page - page_nr: " + str(page_nr))
+    # print("get_records_page - page_nr: " + str(page_nr))
     return response.json()
 
 
