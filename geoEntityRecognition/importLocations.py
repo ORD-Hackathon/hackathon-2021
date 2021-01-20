@@ -91,7 +91,7 @@ def createNewNameValue(loc, importedLocations):
     response = requests.request("POST", url, data=json_object, headers=headers)
     if response.ok:
         importedLocations[loc.geoNameID].append(loc.language)
-
+        print("Location" + loc.text + "stored!")
     return importedLocations
 
 def importLocation(foundLocations, importedLocations):

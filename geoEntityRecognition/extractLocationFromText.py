@@ -2,10 +2,9 @@ import spacy
 import os
 from geoEntity import GeoEntity
 
-
 class ExtractLocationFromText:
     def __init__(self):
-        self.locationLabels = ['GPE', 'LOC', 'FAC']
+        self.locationLabels = ['GPE', 'LOC', 'FAC', 'ORG']
 
     def extractLocationEntities(self, entities, lang):
         foundLocations = []
