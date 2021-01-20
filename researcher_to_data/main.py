@@ -24,7 +24,7 @@ def get_metrics_for_data(data):
 
 
 def main():
-    data = get_data_for_name("Leitgeb, Rainer")
+    data = get_data_for_name("Leitgeb AND Rainer")
     print(data)
     metrics = get_metrics_for_data(data)
     print(metrics)
