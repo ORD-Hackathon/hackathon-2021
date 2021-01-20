@@ -127,7 +127,7 @@ def datasets_to_scores(list_of_datasets):
 
     result = {
         "ids": identifiers,
-        "openness_scores": openness_scores,
+        "openness_score": sum(openness_scores)/len(openness_scores),
         "usage_stats": usage_stats
     }
 
