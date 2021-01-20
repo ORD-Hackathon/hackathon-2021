@@ -90,7 +90,6 @@ def dataset_to_score(data):
         if not data.get("type_available"):
             score -= 2
 
-            
         return score
     else:
         return 0
@@ -131,5 +130,6 @@ def datasets_to_scores(list_of_datasets):
         "openness_scores": openness_scores,
         "usage_stats": usage_stats
     }
+    
 
     return result
