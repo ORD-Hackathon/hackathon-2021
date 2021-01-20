@@ -24,11 +24,15 @@ def get_metrics_for_data(data):
 
 
 def main():
-    data = get_data_for_name("Leitgeb AND Rainer")
-    print(data)
-    metrics = get_metrics_for_data(data)
-    print(metrics)
-    # get_data_for_orcid("0000-0002-0131-4111")
+    data1 = get_data_for_name("Leitgeb AND Rainer")
+    print(data1)
+    metrics1 = get_metrics_for_data(data1)
+    print(metrics1)
+
+    data2 = get_data_for_orcid("0000-0002-0131-4111")
+    print(data2)
+    metrics2 = get_metrics_for_data(data2)
+    print(metrics2)
 
 
 if __name__ == "__main__":
