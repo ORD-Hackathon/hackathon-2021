@@ -1,43 +1,55 @@
-## So far format only for Nature journals.
-
-def get_datasets_from_publication(doi):
-    """Returns list of datasets (in Whatever format IVAN wants, from a paper's doi."""
-    ## TO DO !
-    
-    pass
-
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import re
 
-#DOI = 'https://www.nature.com/articles/s41467-020-18551-0'
-#DOI = 'https://www.nature.com/articles/s41467-020-20688-x'
-DOI = 'https://science.sciencemag.org/content/366/6462/255'
+def get_datasets_from_publication(doi):
 
-html = urlopen(DOI)
+	URL = 'https://dx.doi.org/' + doi
 
-soup = BeautifulSoup(html, "html.parser")
-
-url = []
-#for nature
-table = soup.findAll('div',attrs={"id":"data-availability-content"})
-for x in table:
-        myString = (x.find('p').text)
-        url += re.findall(r'(https?://\S+)', myString)
+	html = urlopen(URL)
+	soup = BeautifulSoup(html, "html.parser")
 
 
-table = soup.findAll('div',attrs={"id":"code-availability-content"})
-for x in table:
-        myString = (x.find('p').text)
-        #print (myString)
-        url += re.findall(r'(https?://\S+)', myString)
+	dataset = [{}]
+	data_id = []
 
-#for science
-table = soup.findAll('div',attrs={"class":"ack"})
-myString = str(table)
-url += re.findall(r'(https?://\S+)', myString)
+	#for nature
+	table = soup.findAll('div',attrs={"id":"data-availability-content"})
+	for x in table:
+		myString = (x.find('p').text)
+		data_id += re.findall(r'(https?://\S+)', myString)
 
 
-print (url)
-#Collapse
+	table = soup.findAll('div',attrs={"id":"code-availability-content"})
+	for x in table:
+		myString = (x.find('p').text)
+		data_id += re.findall(r'(https?://\S+)', myString)
+
+	#for science
+	table = soup.findAll('div',attrs={"class":"ack"})
+	myString = str(table)
+	data_id += re.findall(r'(https?://\S+)', myString)
+
+
+	#for PeerJ
+	table = soup.findAll('div',attrs={"id":"addinfo-1"})
+	for x in table:
+		myString = str((x.find('a')['href']))
+		data_id += re.findall(r'(https?://\S+)', myString)
+
+	table = soup.findAll('div',attrs={"class":"object-id article-component-doi"})
+
+	for x in table:
+		myString = str((x.find('a')['href']))
+		data_id += re.findall(r'(https?://\S+)', myString)
+
+	
+	for item in data_id:
+		dataset.append({'identifier':item, 'access_open': True, 'license_cc_by': True})
+
+	return (dataset)
+
+
+#dataset = get_datasets_from_publication('10.1038/s41467-020-18551-0')
+#print (dataset)
 
