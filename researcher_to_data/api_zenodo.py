@@ -19,27 +19,24 @@ def get_data_for_name(name):
     # get total nr of hits
     total_nr_of_hits = int(records.get("hits").get("total"))
     total_nr_of_pages = int(total_nr_of_hits/10)
-    print("total_nr_of_hits: " + str(total_nr_of_hits) + ' ('+ str(total_nr_of_pages)+' pages))
+    print("total_nr_of_hits: " + str(total_nr_of_hits) + ' (' + str(total_nr_of_pages) + ' pages)')
 
-    # extract ids
-    list_of_ids = [item.get("conceptrecid") for item in records.get("hits").get("hits")]
+    list_of_datasets = []
 
-    # if there is a link to the next (10 records) page, go and fetch it
-    next_page_url = records.get("links").get("next")
-    print("next:" + next_page_url)
+    for hit in records.get("hits").get("hits"):
+        list_of_datasets.append(extract_data_from_hit(hit))
 
     for page in range(1, total_nr_of_pages):
         records = get_records_page(name, page)
-        list_of_ids_on_page = [item.get("conceptrecid") for item in records.get("hits").get("hits")]
-        list_of_ids += list_of_ids_on_page
+        for hit in records.get("hits").get("hits"):
+            list_of_datasets.append(extract_data_from_hit(hit))
 
-    
-    return list_of_ids
+    return list_of_datasets
 
 
 def get_records_page(name, page_nr):
     # hitting rate limits. need to back off a little.
-    time.sleep(1)
+    time.sleep(0.5)
     response = ""
     if page_nr == 0:
         response = r.get(
@@ -53,8 +50,38 @@ def get_records_page(name, page_nr):
             params={'q': 'creators.name:' + name, 'page': page_nr, 'size': 10, 'access_token': ACCESS_TOKEN}
         )
     # print("get_records_page - url: " + response.url)
-    # print("get_records_page - page_nr: " + str(page_nr))
+    print("get_records_page - page_nr: " + str(page_nr))
     return response.json()
+
+
+def extract_data_from_hit(hit):
+    """Extracts the data from the Zenodo record."""
+
+    try:
+        access_right_value = hit.get("metadata").get("access_right")
+        if access_right_value == 'open':
+            access_open = True
+        else:
+            access_open = False
+    except AttributeError:
+        access_open = False
+
+    license_cc_by = False
+    try:
+        license_id = hit.get("metadata").get("license").get("id")
+    except AttributeError:
+        license_id = ""
+
+    if "CC-BY" in license_id:
+        license_cc_by = True
+
+    data = {
+        "identifier": hit.get("metadata").get("doi"),
+        "access_open": access_open,
+        "license_cc_by": license_cc_by
+    }
+
+    return data
 
 
 def get_data_for_orcid(orcid):
@@ -67,7 +94,7 @@ def get_data_for_orcid(orcid):
 def get_data_for_doi(doi):
     response = r.get(
         'https://zenodo.org/api/records',
-        params={'q': 'creators.orcid:' + orcid, 'access_token': ACCESS_TOKEN}
+        params={'q': 'doi:' + doi, 'access_token': ACCESS_TOKEN}
     )
     print(response.url)
     return response.json()

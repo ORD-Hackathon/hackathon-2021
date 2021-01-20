@@ -46,13 +46,14 @@ def dataset_to_score(data):
     else:
         score = 0
 
-    if not data.get("accrual_method"):
-        score -= 3
-
-    if not data.get("accrual_policy"):
-        score -= 1
-
-    # TODO: add the rest
+    # if score == 100:
+    #     if not data.get("accrual_method"):
+    #         score -= 3
+    #
+    #     if not data.get("accrual_policy"):
+    #         score -= 1
+    #
+    #     # TODO: add the rest
 
     return score
 
@@ -83,9 +84,9 @@ def datasets_to_scores(list_of_datasets):
     usage_stats = []
 
     for data in list_of_datasets:
-        identifiers += data.get("identifier")
-        openness_scores += dataset_to_score(data)
-        usage_stats += dataset_to_usage_stats(data)
+        identifiers.append(data.get("identifier"))
+        openness_scores.append(dataset_to_score(data))
+        usage_stats.append(dataset_to_usage_stats(data))
 
     result = {
         "ids": identifiers,
