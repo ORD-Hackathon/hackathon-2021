@@ -59,16 +59,19 @@ if __name__ == '__main__':
     englishTestData = os.path.join(testDataPath, "en_magellan_voyage.txt")
     englishText = open(englishTestData, "r").read()
     foundLocations = parser.getLocationsEnglish(englishText)
-
+    print(f"---English---\nLocations found: {len(foundLocations)}\nResults:\n{pretty_print(foundLocations)}\n\n")
 
     germanTestData = os.path.join(testDataPath, "de_mozartItalienReise.txt")
     germanText = open(germanTestData, "r").read()
     foundLocations = parser.getLocationsGerman(germanText)
+    print(f"---German---\nLocations found: {len(foundLocations)}\nResults:\n{pretty_print(foundLocations)}\n\n")
 
     frenchTestData = os.path.join(testDataPath, "fr_paris_a_Jerusalem.txt")
     frenchText = open(frenchTestData, "r").read()
     foundLocations = parser.getLocationsFrench(frenchText)
+    print(f"---French---\nLocations found: {len(foundLocations)}\nResults:\n{pretty_print(foundLocations)}\n\n")
 
     italianTestData = os.path.join(testDataPath, "it_marcOPollo.txt")
     italianText = open(italianTestData, "r").read()
     foundLocations = parser.getLocationsItalian(italianText)
+    print(f"---Italian---\nLocations found: {len(foundLocations)}\nResults:\n{pretty_print(foundLocations)}\n\n")
