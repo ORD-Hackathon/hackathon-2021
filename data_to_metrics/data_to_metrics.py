@@ -130,6 +130,6 @@ def datasets_to_scores(list_of_datasets):
         "openness_scores": openness_scores,
         "usage_stats": usage_stats
     }
-    
+
 
     return result
