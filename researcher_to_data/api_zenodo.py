@@ -10,8 +10,8 @@ ACCESS_TOKEN = "RRlabvBJSg4yFCVwILXvtTdEYoMBpQ3fw6CuGmjWNUIwXX6tmDREvQcktRLe"
 # get usage metrics for found datasets
 
 
-def get_record_dois_for_name(name):
-    """Returns all found dois for records, where the name is the creator."""
+def get_data_for_name(name):
+    """Returns score and metrics data points for all found records, where the name is the creator."""
 
     # get first 10 records
     records = get_records_page(name, 0)
