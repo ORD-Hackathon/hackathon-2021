@@ -1,18 +1,21 @@
 from geoEntity import GeoEntity
 from lxml import etree as et
+import re
 
 def parse_locations_from_tei(filepath):
-    # String snippet for specify TEI tags in XML
-    tei_string = "{http://www.tei-c.org/ns/1.0}"
-
     # Reads the file
     root = et.parse(filepath).getroot()
+
+    # String snippet for specify TEI tags in XML
+    tei_string = re.search("{.*}", root.tag)
+    tei_string = tei_string.group() if tei_string else ""
 
     # Extracts list of matches for <place> tag.
     places = list(root.iterfind(f".//{tei_string}place"))
 
     foundLocations = []
     for place in places:
+        # Find the place of the name (GeoEntity.text property)
         placeName = place.find(f".//{tei_string}placeName")
 
         # Optionally adds region and country if that information is available
