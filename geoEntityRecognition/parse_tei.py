@@ -19,8 +19,14 @@ def parse_locations_from_tei(filepath):
         regionName = place.find(f".//{tei_string}region")
         countryName = place.find(f".//{tei_string}country")
         placeName = f"{placeName.text}{', ' + regionName.text if regionName is not None else ''}{', ' + countryName.text if countryName is not None else ''}"
+        
+        # Leaving GPE as the defulat label type for now
         label = "GPE"
+
+        # Coordinates are stored as space-separated string of the form <geo>lat long</geo>
         placeCoords = place.find(f".//{tei_string}geo").text.split()
+
+        # Creating and appending new GeoEntity for each location found
         entity = GeoEntity(text=placeName, label=label, lang="en", lat=placeCoords[0], lon=placeCoords[1])
         foundLocations.append(entity)
     
