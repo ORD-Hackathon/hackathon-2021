@@ -18,9 +18,8 @@ def get_data_for_name(name):
 
     # get total nr of hits
     total_nr_of_hits = int(records.get("hits").get("total"))
-    print("total_nr_of_hits: " + str(total_nr_of_hits))
     total_nr_of_pages = int(total_nr_of_hits/10)
-    print("total_nr_of_pages: " + str(total_nr_of_pages))
+    print("total_nr_of_hits: " + str(total_nr_of_hits) + ' ('+ str(total_nr_of_pages)+' pages))
 
     # extract ids
     list_of_ids = [item.get("conceptrecid") for item in records.get("hits").get("hits")]
@@ -34,8 +33,8 @@ def get_data_for_name(name):
         list_of_ids_on_page = [item.get("conceptrecid") for item in records.get("hits").get("hits")]
         list_of_ids += list_of_ids_on_page
 
-    # print the final list
-    print(list_of_ids)
+    
+    return list_of_ids
 
 
 def get_records_page(name, page_nr):
@@ -48,12 +47,13 @@ def get_records_page(name, page_nr):
             params={'q': 'creators.name:' + name, 'access_token': ACCESS_TOKEN}
         )
     else:
+        pass
         response = r.get(
             'https://zenodo.org/api/records',
             params={'q': 'creators.name:' + name, 'page': page_nr, 'size': 10, 'access_token': ACCESS_TOKEN}
         )
     # print("get_records_page - url: " + response.url)
-    print("get_records_page - page_nr: " + str(page_nr))
+    # print("get_records_page - page_nr: " + str(page_nr))
     return response.json()
 
 

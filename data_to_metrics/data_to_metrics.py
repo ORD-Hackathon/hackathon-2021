@@ -3,7 +3,7 @@
 
 # The data should be a dictionary in the following form:
 # {
-#   identifier: string,
+#   identifier: string (doi or link)
 #   access_open: True/False,
 #   license_cc_by: True/False,
 #   accrual_method: True/False,
