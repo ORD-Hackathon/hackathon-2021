@@ -124,11 +124,26 @@ def datasets_to_scores(list_of_datasets):
         identifiers.append(data.get("identifier"))
         openness_scores.append(dataset_to_score(data))
         usage_stats.append(dataset_to_usage_stats(data))
+        
+        unique_views = []
+        for record in range(0,len(usage_stats)):
+            unique_views.append(usage_stats[record]['unique_views'])
+        avg_unique_views = sum(unique_views)/len(unique_views)
+        
+        downloads = []
+        for record in range(0,len(usage_stats)):
+            downloads.append(usage_stats[record]['downloads'])
+        avg_downloads = sum(downloads)/len(downloads)
+        
+
+
 
     result = {
         "ids": identifiers,
         "openness_score": sum(openness_scores)/len(openness_scores),
-        "usage_stats": usage_stats
+        "usage_stats": usage_stats,
+        "avg_unique_views":avg_unique_views,
+        "avg_downloads":avg_downloads
     }
 
 
