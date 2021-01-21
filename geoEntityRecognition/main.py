@@ -1,5 +1,6 @@
 from createLocationResources import *
 from createDocumentResources import createDocumentResource
+import os
 
 importedLocations = {}
 
