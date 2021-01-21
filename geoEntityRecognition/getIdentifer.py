@@ -44,8 +44,8 @@ def addWikiInfo(foundLocations):
     for loc in foundLocations:
         print(counter)
         loc.wikiID, loc.geoNameID, loc.longitude, loc.latitude = getWikiRecord(loc.text, loc.language)
-        if (counter == 10):
-            time.sleep(120)
+        if (counter == 8):
+            time.sleep(90)
             counter = 0
         else:
             counter += 1

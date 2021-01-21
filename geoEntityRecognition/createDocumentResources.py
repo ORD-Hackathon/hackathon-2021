@@ -1,5 +1,6 @@
 from writeElement import writeToXMLForImport
 import json
+import codecs
 import requests
 
 def importDocument(textContent, name):
@@ -39,7 +40,8 @@ def importDocument(textContent, name):
     if response.ok:
         print("Document "+ name + "is stored!")
 
-def createDocumentResource(text, updatedLocations, name):
+def createDocumentResource(text, updatedLocations, name, outputFile):
     pureText = open(text, "r").read()
-    textContent = writeToXMLForImport(pureText, foundLocations=updatedLocations)
-    importDocument(textContent, name)
+    writeToXMLForImport(pureText, updatedLocations, outputFile)
+    # textContent = codecs.open(outputFile, 'r', encoding='utf8')
+    # importDocument(textContent, name)

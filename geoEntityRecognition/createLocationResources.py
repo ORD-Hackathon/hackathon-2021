@@ -15,9 +15,7 @@ def createLocationsInEnglishText(importedLocations, testData):
 
     return updatedLocations, importedLocations
 
-def createLocationsInGermanText(importedLocations):
-    testFile = "de_swiss.txt"
-    testData = os.path.join(testDataPath, testFile)
+def createLocationsInGermanText(importedLocations, testData):
     text = open(testData, "r").read()
     foundLocations = parser.getLocationsGerman(text)
     updatedLocations = addWikiInfo(foundLocations=foundLocations)
