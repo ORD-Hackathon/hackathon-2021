@@ -7,9 +7,9 @@ def importDocument(textContent, name):
     url = "http://localhost:3333/v2/resources"
     payload = {}
     payload["@id"] = "http://rdfh.ch/0001/document_" + name
-    payload["@type"] = "anything:Document"
+    payload["@type"] = "geo:Document"
     payload["knora-api:attachedToProject"] = {"@id": "http://rdfh.ch/projects/0001"}
-    payload["anything:hasTextWithLocation"] = {
+    payload["geo:hasTextWithLocation"] = {
         "@type": "knora-api:TextValue",
         "knora-api:textValueAsXml": textContent,
         "knora-api:textValueHasMapping": { "@id": "http://rdfh.ch/standoff/mappings/StandardMapping"},

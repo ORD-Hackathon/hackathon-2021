@@ -1,4 +1,4 @@
-from getIdentifer import addWikiInfo
+from getIdentifier import addWikiInfo
 from writeElement import writeToHTML
 from importLocations import importLocation
 import os
@@ -23,9 +23,7 @@ def createLocationsInGermanText(importedLocations, testData):
 
     return updatedLocations, importedLocations
 
-def createLocationsInFrenchText(importedLocations):
-    testFile = "fr_paris_a_Jerusalem.txt"
-    testData = os.path.join(testDataPath, testFile)
+def createLocationsInFrenchText(importedLocations, testData):
     text = open(testData, "r").read()
     foundLocations = parser.getLocationsFrench(text)
     updatedLocations = addWikiInfo(foundLocations=foundLocations)
@@ -34,9 +32,7 @@ def createLocationsInFrenchText(importedLocations):
     return updatedLocations, importedLocations
 
 
-def createLocationsInItalianText(importedLocations):
-    testFile = "it_marcOPollo.txt"
-    testData = os.path.join(testDataPath, testFile)
+def createLocationsInItalianText(importedLocations, testData):
     text = open(testData, "r").read()
     foundLocations = parser.getLocationsItalian(text)
     updatedLocations = addWikiInfo(foundLocations=foundLocations)

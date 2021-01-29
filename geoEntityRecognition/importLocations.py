@@ -1,15 +1,13 @@
 import requests
 import json
 
-
-
-ontoName = "anything"
+ontoName = "geo"
 
 def createNewResourceForLocation(loc, importedLocations):
     url = "http://localhost:3333/v2/resources"
     payload = {}
     payload["@id"] = "http://rdfh.ch/0001/" + loc.geoNameID
-    payload["@type"] = "anything:Location"
+    payload["@type"] = ontoName + ":Location"
     payload["knora-api:attachedToProject"] = {"@id": "http://rdfh.ch/projects/0001"}
     payload[ontoName + ":hasName"] = {
         "@type": "knora-api:TextValue",
@@ -46,7 +44,7 @@ def createNewResourceForLocation(loc, importedLocations):
         "knora-api": "http://api.knora.org/ontology/knora-api/v2#",
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "anything": "http://0.0.0.0:3333/ontology/0001/anything/v2#"
+        "geo": "http://0.0.0.0:3333/ontology/0001/geo/v2#"
     }
     json_object = json.dumps(payload, indent=4)
     headers = {
@@ -57,13 +55,16 @@ def createNewResourceForLocation(loc, importedLocations):
     response = requests.request("POST", url, data=json_object, headers=headers)
     if response.ok:
         importedLocations[loc.geoNameID] = [loc.language]
+        print("Location" + loc.text + "stored!")
+    else :
+        print (response.content)
     return importedLocations
 
 def createNewNameValue(loc, importedLocations):
     url = "http://localhost:3333/v2/values"
     payload = {}
     payload["@id"] = "http://rdfh.ch/0001/" + loc.geoNameID
-    payload["@type"] = "anything:Location"
+    payload["@type"] = ontoName + ":Location"
     payload[ontoName + ":hasName"] = {
         "@type": "knora-api:TextValue",
         "knora-api:valueAsString": loc.text,
@@ -78,7 +79,7 @@ def createNewNameValue(loc, importedLocations):
         "knora-api": "http://api.knora.org/ontology/knora-api/v2#",
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "anything": "http://0.0.0.0:3333/ontology/0001/anything/v2#"
+        "geo": "http://0.0.0.0:3333/ontology/0001/geo/v2#"
     }
 
 

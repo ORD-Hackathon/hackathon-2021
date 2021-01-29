@@ -38,7 +38,8 @@ def writeToXMLForImport(text, foundLocations, outputFile):
         paragraph.text += text[first_index:loc.startChar]
         if loc.geoNameID:
             paragraph.text += '<a class="salsah-link" href="http://rdfh.ch/0001/' + loc.geoNameID + '">' + loc.text + "</a>"
-
+        else:
+            paragraph.text += loc.text
         first_index = loc.endChar
 
     lastLocation = foundLocations[-1].endChar
